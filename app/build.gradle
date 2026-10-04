@@ -7,10 +7,44 @@ android {
     compileSdk 35
 
     defaultConfig {
-        applicationId 'com.baher.phonescreencast'
+        applicationId "com.baher.phonescreencast"
         minSdk 30
         targetSdk 35
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
+
+        // The test device is 32-bit ARM; 64-bit ARM covers modern phones.
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
     }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-core:2.8.7'
+
+    // Real WebRTC (libwebrtc M125) with armeabi-v7a support, hosted on Maven Central.
+    implementation 'io.github.webrtc-sdk:android:125.6422.07'
+
+    // Local HTTP + WebSocket server (single port).
+    implementation 'org.nanohttpd:nanohttpd-websocket:2.3.1'
+
+    // Offline QR code generation.
+    implementation 'com.google.zxing:core:3.5.3'
 }

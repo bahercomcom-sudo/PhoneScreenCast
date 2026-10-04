@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#05080d">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>PhoneScreenCast</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main id="stage">
+    <video id="screen" autoplay playsinline muted></video>
+
+    <div id="overlay" role="status" aria-live="polite">
+      <div class="spinner" aria-hidden="true"></div>
+      <p id="overlayText">Connecting...</p>
+      <button id="playBtn" type="button" hidden>Tap to play</button>
+    </div>
+
+    <header id="topbar">
+      <span class="brand">PhoneScreenCast</span>
+      <span id="status" class="status" data-state="connecting">
+        <i class="dot" aria-hidden="true"></i>
+        <span id="statusText">Connecting...</span>
+      </span>
+    </header>
+
+    <footer id="controls">
+      <button id="fsBtn" type="button">Fullscreen</button>
+    </footer>
+  </main>
+  <script src="/viewer.js"></script>
+</body>
+</html>
